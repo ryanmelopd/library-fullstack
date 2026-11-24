@@ -38,7 +38,7 @@ public class LivroService {
         LivroEntity livro = LivroEntity.builder()
                 .titulo(dto.titulo())
                 .anoPublicacao(dto.anoPublicacao())
-                .autorEntity(buscarAutor(dto.autorId()))
+                .autor(buscarAutor(dto.autorId()))
                 .build();
 
         return paraResponse(livroRepository.save(livro));
@@ -49,7 +49,7 @@ public class LivroService {
         LivroEntity livro = buscarEntidade(id);
         livro.setTitulo(dto.titulo());
         livro.setAnoPublicacao(dto.anoPublicacao());
-        livro.setAutorEntity(buscarAutor(dto.autorId()));
+        livro.setAutor(buscarAutor(dto.autorId()));
 
         return paraResponse(livroRepository.save(livro));
     }
@@ -76,7 +76,7 @@ public class LivroService {
                 livro.getId(),
                 livro.getTitulo(),
                 livro.getAnoPublicacao(),
-                livro.getAutorEntity().getId(),
-                livro.getAutorEntity().getNome());
+                livro.getAutor().getId(),
+                livro.getAutor().getNome());
     }
 }
